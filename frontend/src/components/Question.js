@@ -22,7 +22,7 @@ class Question extends Component {
           <img
             className='category'
             alt={'none'}
-            src={`${category.toLowerCase()}.svg`}
+            src={`${category}.svg`}
           />
           <div className='difficulty'>Difficulty: {difficulty}</div>
           <img
