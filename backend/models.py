@@ -3,20 +3,20 @@ from sqlalchemy import Column, String, Integer, create_engine
 from flask_sqlalchemy import SQLAlchemy
 import json
 
-DB_HOST = 'DB_HOST', 'trivia-api-do-user-13431804-0.b.db.ondigitalocean.com'
-DB_USER = 'DB_USER', 'doadmin'
-DB_PASSWORD ='DB_PASSWORD', 'AVNS_lI0NwC6EkcojLI8pwfe'
-DB_NAME = 'DB_NAME', 'defaultdb'
-DB_PATH = 'postgresql+psycopg2://{}:{}@{}/{}'.format(DB_USER, DB_PASSWORD, DB_HOST, DB_NAME)
-#DB_PATH =  'postgresql://root:Pp251100@localhost:5432/trivia'
+#DB_HOST = 'DB_HOST', 'trivia-api-do-user-13431804-0.b.db.ondigitalocean.com'
+#DB_USER = 'DB_USER', 'doadmin'
+#DB_PASSWORD ='DB_PASSWORD', 'AVNS_lI0NwC6EkcojLI8pwfe'
+#DB_NAME = 'DB_NAME', 'defaultdb'
+#DB_PATH = 'postgresql+psycopg2://{}:{}@{}/{}'.format(DB_USER, DB_PASSWORD, DB_HOST, DB_NAME)
+DATABASE_URL =  'postgres://sexknifnnrjgyu:6a7cdcf5e2c1f5ded64af7f83ce0038614119438af37dfbec8a0629a943d4735@ec2-54-157-79-121.compute-1.amazonaws.com:5432/d2fpmprftlj77u'
 db = SQLAlchemy()
 
 '''
 setup_db(app)
     binds a flask application and a SQLAlchemy service
 '''
-def setup_db(app, database_path=DB_PATH):
-    app.config["SQLALCHEMY_DATABASE_URI"] = DB_PATH
+def setup_db(app, database_path=DATABASE_URL):
+    app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
     db.init_app(app)
