@@ -3,19 +3,20 @@ from sqlalchemy import Column, String, Integer, create_engine
 from flask_sqlalchemy import SQLAlchemy
 import json
 
-#DB_HOST = 'DB_HOST', 'trivia-api-do-user-13431804-0.b.db.ondigitalocean.com'
-#DB_USER = 'DB_USER', 'doadmin'
-#DB_PASSWORD ='DB_PASSWORD', 'AVNS_lI0NwC6EkcojLI8pwfe'
-#DB_NAME = 'DB_NAME', 'defaultdb'
-#DB_PATH = 'postgresql+psycopg2://{}:{}@{}/{}'.format(DB_USER, DB_PASSWORD, DB_HOST, DB_NAME)
+DB_HOST = 'DB_HOST', 'localhost'
+DB_USER = 'DB_USER', 'root'
+DB_PASSWORD ='DB_PASSWORD', 'Pp251100'
+DB_NAME = 'DB_NAME', 'trivia'
+DB_PATH = 'postgresql://root:Pp251100@localhost:5432/trivia'
+
 db = SQLAlchemy()
 
 '''
 setup_db(app)
     binds a flask application and a SQLAlchemy service
 '''
-def setup_db(app, database_path=DATABASE_URL):
-    app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
+def setup_db(app, database_path=DB_PATH):
+    app.config["SQLALCHEMY_DATABASE_URI"] = DB_PATH
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
     db.init_app(app)

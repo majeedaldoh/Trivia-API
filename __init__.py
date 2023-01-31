@@ -4,7 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import random
 
-from models import setup_db, Question, Category
+from .models import setup_db, Question, Category
+
 
 QUESTIONS_PER_PAGE = 10
 
@@ -24,7 +25,8 @@ def paginate_questions(request, selection):
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__)
-    setup_db(app)
+    with app.app_context():
+        setup_db(app)
 
     '''
   @TODO: Set up CORS. Allow '*' for origins. Delete the sample route after completing the TODOs
